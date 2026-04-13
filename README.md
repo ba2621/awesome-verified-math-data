@@ -107,12 +107,10 @@ Software for working with formal math data.
 
 Key gaps and open questions in the verified math data ecosystem.
 
-- **Coverage gaps.** Mathlib4 is deep in pure mathematics but thin in areas like combinatorics, probability, and applied math. These domains are underrepresented relative to their importance.
 - **Tactic-level datasets.** Most datasets capture theorem statements and final proofs, but intermediate tactic traces (the step-by-step proof state) are harder to extract at scale and are underutilized.
 - **Autoformalization at scale.** Translating the existing corpus of arXiv mathematics into verified Lean statements remains unsolved. High-quality informal-formal paired datasets are scarce.
 - **Proof diversity.** Libraries tend to contain one proof per theorem. Datasets with multiple, stylistically diverse proofs of the same statement would better support learning generalization.
-- **Cross-assistant alignment.** MiniF2F is the only major benchmark formalized across multiple proof assistants. Broader cross-system datasets would help compare systems and enable transfer.
-- **Dynamic / evolving benchmarks.** Most benchmarks are static. A living benchmark that adds new problems as they are formalized (e.g. from recent competition seasons) is an open infrastructure challenge.
+- **Automation** How can we automate the creation of formal verified math data?
 
 ---
 
