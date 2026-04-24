@@ -20,6 +20,15 @@ Most training data for math AI falls into the **human-authored** regime: textboo
 
 This repository aggregates existing verified math datasets, explains the landscape, and surfaces open research directions for the community.
 
+For each dataset, I have created an "empirical" evaluation based on a few factors of when I inspect the datasets. On a scale from 1-10, each dataset is ranked on:
+- Data diversity
+- Size
+- Level of formalization
+- Ease of use
+- Complexity (more complex datasets and "tougher" problems are ranked higher)
+
+The evaluation of the dataset is then a simple average of these five factors. Full evaluations with per-factor justifications are in the [`evaluations/`](evaluations/) folder — see the [index](evaluations/index.md) for a ranked overview of all datasets.
+
 ---
 
 ## Contents
@@ -31,6 +40,8 @@ This repository aggregates existing verified math datasets, explains the landsca
 - [Human-Authored Reference Datasets](#human-authored-reference-datasets)
 - [Tools & Infrastructure](#tools--infrastructure)
 - [Research Directions & Open Problems](#research-directions--open-problems)
+- [Dataset Evaluations](evaluations/index.md)
+- [System Prompts](#system-prompts)
 - [Contributing](#contributing)
 
 ---
@@ -39,12 +50,12 @@ This repository aggregates existing verified math datasets, explains the landsca
 
 The foundational corpora of machine-verified mathematics.
 
-- **[Mathlib4](https://github.com/leanprover-community/mathlib4)** — The canonical community mathematics library for Lean 4. Covers algebra, analysis, topology, number theory, and more. The de facto standard corpus for formal math AI research.
-- **[Lean 4 Core](https://github.com/leanprover/lean4)** — Core Lean 4 library, including foundational logic and type theory.
-- **[Archive of Formal Proofs (AFP)](https://www.isa-afp.org/)** — A large collection of formal proofs in Isabelle/HOL, spanning thousands of entries across many mathematical domains.
-- **[Coq Standard Library](https://coq.inria.fr/library/)** — The standard library for the Coq proof assistant.
-- **[UniMath](https://github.com/UniMath/UniMath)** — A library of mathematics formalized in Coq using the univalent foundations perspective.
-- **[HOL Light](https://www.cl.cam.ac.uk/~jrh13/hol-light/)** — A proof assistant and its accompanying library, notably including a formal proof of the Kepler conjecture.
+- **[Mathlib4](https://github.com/leanprover-community/mathlib4)** — The canonical community mathematics library for Lean 4. Covers algebra, analysis, topology, number theory, and more. The de facto standard corpus for formal math AI research. | [Evaluation](evaluations/formal-libraries/mathlib4.md) — **8.6/10**
+- **[Lean 4 Core](https://github.com/leanprover/lean4)** — Core Lean 4 library, including foundational logic and type theory. | [Evaluation](evaluations/formal-libraries/lean4-core.md) — **5.8/10**
+- **[Archive of Formal Proofs (AFP)](https://www.isa-afp.org/)** — A large collection of formal proofs in Isabelle/HOL, spanning thousands of entries across many mathematical domains. | [Evaluation](evaluations/formal-libraries/afp.md) — **8.2/10**
+- **[Coq Standard Library](https://coq.inria.fr/library/)** — The standard library for the Coq proof assistant. | [Evaluation](evaluations/formal-libraries/coq-standard-library.md) — **6.2/10**
+- **[UniMath](https://github.com/UniMath/UniMath)** — A library of mathematics formalized in Coq using the univalent foundations perspective. | [Evaluation](evaluations/formal-libraries/unimath.md) — **6.2/10**
+- **[HOL Light](https://www.cl.cam.ac.uk/~jrh13/hol-light/)** — A proof assistant and its accompanying library, notably including a formal proof of the Kepler conjecture. | [Evaluation](evaluations/formal-libraries/hol-light.md) — **6.8/10**
 
 ---
 
@@ -52,10 +63,10 @@ The foundational corpora of machine-verified mathematics.
 
 Curated problem sets for evaluating formal and informal math reasoning.
 
-- **[MiniF2F](https://github.com/openai/miniF2F)** — 488 competition-level math problems formalized in Lean, Isabelle, HOL Light, and Metamath. The standard benchmark for formal theorem proving.
-- **[ProofNet](https://github.com/zhangir-azerbayev/ProofNet)** — Undergraduate-level mathematical theorems with formal Lean 4 statements, designed to evaluate autoformalization.
-- **[FIMO](https://arxiv.org/abs/2309.04295)** — IMO problems formalized in Lean 4.
-- **[LeanDojo Benchmark](https://leandojo.org/)** — Theorems and proofs extracted from Mathlib4, with tactic-level annotations for training and evaluation of proof search models.
+- **[MiniF2F](https://github.com/openai/miniF2F)** — 488 competition-level math problems formalized in Lean, Isabelle, HOL Light, and Metamath. The standard benchmark for formal theorem proving. | [Evaluation](evaluations/benchmarks/minif2f.md) — **7.0/10**
+- **[ProofNet](https://github.com/zhangir-azerbayev/ProofNet)** — Undergraduate-level mathematical theorems with formal Lean 4 statements, designed to evaluate autoformalization. | [Evaluation](evaluations/benchmarks/proofnet.md) — **6.0/10**
+- **[FIMO](https://arxiv.org/abs/2309.04295)** — IMO problems formalized in Lean 4. | [Evaluation](evaluations/benchmarks/fimo.md) — **6.2/10**
+- **[LeanDojo Benchmark](https://leandojo.org/)** — Theorems and proofs extracted from Mathlib4, with tactic-level annotations for training and evaluation of proof search models. | [Evaluation](evaluations/benchmarks/leandojo-benchmark.md) — **8.4/10**
 
 ---
 
@@ -63,9 +74,9 @@ Curated problem sets for evaluating formal and informal math reasoning.
 
 Datasets pairing informal (natural language) mathematics with formal statements or proofs.
 
-- **[MATH-to-Lean](https://github.com/wellecks/ntptutorial)** — Datasets and tools from research on neural theorem proving, including informal-formal pairs.
-- **[AutoFormalization with LLMs (He et al.)](https://arxiv.org/abs/2205.12615)** — Dataset from early work on using language models to translate informal math to Lean.
-- **[MMA (Multilingual Mathematical Autoformalization)](https://arxiv.org/abs/2311.02155)** — Informal-formal pairs across multiple languages and proof assistants.
+- **[MATH-to-Lean](https://github.com/wellecks/ntptutorial)** — Datasets and tools from research on neural theorem proving, including informal-formal pairs. | [Evaluation](evaluations/autoformalization/math-to-lean.md) — **6.2/10**
+- **[AutoFormalization with LLMs (He et al.)](https://arxiv.org/abs/2205.12615)** — Dataset from early work on using language models to translate informal math to Lean. | [Evaluation](evaluations/autoformalization/autoformalization-he-et-al.md) — **5.4/10**
+- **[MMA (Multilingual Mathematical Autoformalization)](https://arxiv.org/abs/2311.02155)** — Informal-formal pairs across multiple languages and proof assistants. | [Evaluation](evaluations/autoformalization/mma.md) — **6.8/10**
 
 ---
 
@@ -73,9 +84,10 @@ Datasets pairing informal (natural language) mathematics with formal statements 
 
 Machine-generated datasets for scaling beyond the human-authored corpus.
 
-- **[LEGO-Prover](https://arxiv.org/abs/2310.00656)** — Grows a library of verified Lean lemmas via iterative generation, creating an expanding corpus of machine-verified skills.
-- **[Hypertree Proof Search Data](https://arxiv.org/abs/2205.11491)** — Proof search traces from Expert Iteration over formal libraries.
-- **[Draft-Sketch-Prove](https://arxiv.org/abs/2210.12283)** — Generated proof attempts with formal verification in the loop.
+- **[LEGO-Prover](https://arxiv.org/abs/2310.00656)** — Grows a library of verified Lean lemmas via iterative generation, creating an expanding corpus of machine-verified skills. | [Evaluation](evaluations/autoformalization/lego-prover.md) — **6.6/10**
+- **[Hypertree Proof Search Data](https://arxiv.org/abs/2205.11491)** — Proof search traces from Expert Iteration over formal libraries. | [Evaluation](evaluations/synthetic/hypertree-proof-search.md) — **6.6/10**
+- **[Draft-Sketch-Prove](https://arxiv.org/abs/2210.12283)** — Generated proof attempts with formal verification in the loop. | [Evaluation](evaluations/synthetic/draft-sketch-prove.md) — **6.0/10**
+- **[Big-Math-RL-Verified](https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified)** — Largest open-source dataset of high-quality mathematical problems, curated specifically for reinforcement learning (RL) training in language models. 250k rigorously filtered and verified problems. | [Evaluation](evaluations/synthetic/big-math-rl-verified.md) — **8.0/10**
 
 ---
 
@@ -83,11 +95,11 @@ Machine-generated datasets for scaling beyond the human-authored corpus.
 
 Informal datasets included for context and cross-referencing. These are valuable for pretraining and autoformalization but are not formally verified.
 
-- **[MATH](https://github.com/hendrycks/math)** — 12,500 competition math problems with step-by-step solutions, across 7 subjects.
-- **[GSM8K](https://github.com/openai/grade-school-math)** — 8,500 grade-school math word problems from OpenAI.
-- **[NaturalProofs](https://github.com/wellecks/naturalproofs)** — Mathematical theorem statements and proofs scraped from ProofWiki and textbooks.
-- **[AMPS](https://github.com/hendrycks/math)** — Khan Academy and Mathematica problem sets used in MATH pretraining.
-- **[Lean Workbook](https://arxiv.org/abs/2406.03847)** — ~57k informal math problems with Lean 4 statements (partially verified).
+- **[MATH](https://github.com/hendrycks/math)** — 12,500 competition math problems with step-by-step solutions, across 7 subjects. | [Evaluation](evaluations/human-authored/math.md) — **6.0/10**
+- **[GSM8K](https://github.com/openai/grade-school-math)** — 8,500 grade-school math word problems from OpenAI. | [Evaluation](evaluations/human-authored/gsm8k.md) — **4.2/10**
+- **[NaturalProofs](https://github.com/wellecks/naturalproofs)** — Mathematical theorem statements and proofs scraped from ProofWiki and textbooks. | [Evaluation](evaluations/human-authored/naturalproofs.md) — **5.8/10**
+- **[AMPS](https://github.com/hendrycks/math)** — Khan Academy and Mathematica problem sets used in MATH pretraining. | [Evaluation](evaluations/human-authored/amps.md) — **5.6/10**
+- **[Lean Workbook](https://arxiv.org/abs/2406.03847)** — ~57k informal math problems with Lean 4 statements (partially verified). | [Evaluation](evaluations/human-authored/lean-workbook.md) — **6.4/10**
 
 ---
 
@@ -111,6 +123,21 @@ Key gaps and open questions in the verified math data ecosystem.
 - **Autoformalization at scale.** Translating the existing corpus of arXiv mathematics into verified Lean statements remains unsolved. High-quality informal-formal paired datasets are scarce.
 - **Proof diversity.** Libraries tend to contain one proof per theorem. Datasets with multiple, stylistically diverse proofs of the same statement would better support learning generalization.
 - **Automation** How can we automate the creation of formal verified math data?
+
+---
+
+## System Prompts
+
+Persona-based system prompts for interacting with an LLM about this repository and its datasets. Each prompt is tailored to a different background and set of goals, so the assistant can give appropriately targeted responses rather than generic ones.
+
+| Persona | Description |
+|---------|-------------|
+| [AI Researcher / Model Developer](system-prompts/ai-researcher-model-developer.md) | ML practitioner evaluating datasets for training or benchmarking neural theorem provers and reasoning models |
+| [PhD Mathematics Student](system-prompts/phd-math-student.md) | Graduate student learning to use formal verification tools and datasets for research |
+| [Undergraduate Mathematics Student](system-prompts/undergraduate-student.md) | Undergrad getting started with formal math and proof assistants |
+| [Middle School Math Prodigy](system-prompts/middle-school-math-prodigy.md) | Competition math student (AMC/AIME/MATHCOUNTS) exploring formal mathematics for the first time |
+| [Software Engineer Curious About AI and Math](system-prompts/software-engineer-ai-math-curious.md) | Engineer with a software background exploring the intersection of LLMs and formal mathematics |
+| [Terence Tao](system-prompts/terence-tao.md) | Research mathematician at the frontier, exploring formal verification as a tool for research |
 
 ---
 
